@@ -1,0 +1,18 @@
+#gearLoad {
+	left: 567px;
+	top: 432px;
+	animation-name: spin;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-duration: 5s;
+}
+
+#gearLoad2 {
+	left: 590px;
+	top: 413px;
+	animation-name: spin;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: reverse;
+	animation-duration: 5s;
+}

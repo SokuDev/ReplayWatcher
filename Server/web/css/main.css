@@ -1,0 +1,162 @@
+@keyframes spin {
+	from {
+		transform: rotate(0deg)
+	}
+	to {
+		transform: rotate(359deg)
+	}
+}
+
+#gameHUDUpper {
+	z-index: 10;
+}
+
+#gameHUDUnder {
+	z-index: 10;
+}
+
+#counterTransform {
+	z-index: -100;
+}
+
+#gameBackground {
+	top: -450px;
+	left: 265px;
+	width: 1536px;
+	height: 1280px;
+	z-index: -100;
+	transform-origin: 0px 800px;
+}
+
+#hidder {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 100;
+	box-shadow: 0 0 0 4000px rgba(0, 0, 0, 1);
+	pointer-events: none;
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+.game-container {
+	width: min(100vw, 133vh);
+	height: min(100vh, 75vw);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#musicSlider {
+	transform: rotate(-90deg);
+	position: absolute;
+	transform-origin: top left;
+	left: calc(100% - 24px + 2px);
+	top: -4px;
+	transition: opacity 0.25s;
+	display: none;
+}
+
+#sfxSlider {
+	transform: rotate(-90deg);
+	position: absolute;
+	transform-origin: top left;
+	left: calc(100% - 24px - 24px + 2px);
+	top: -4px;
+	transition: opacity 0.25s;
+	display: none;
+}
+
+#p1Portrait {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 10;
+}
+
+#p2Portrait {
+	position: absolute;
+	top: 0;
+	left: 640px;
+	z-index: 10;
+	transform: scaleX(-1);
+	transform-origin: top left;
+}
+
+.game {
+	position: absolute;
+	width: 640px;
+	height: 480px;
+	transform-origin: top left;
+}
+
+.game * {
+	position: absolute;
+}
+
+#fadeObject {
+	background-color: black;
+	pointer-events: none;
+}
+
+#videoControlContainer {
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+
+#videoControl {
+	bottom: 0;
+	width: 100%;
+	height: 24px;
+	z-index: 1000;
+}
+
+#resetReplay {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 24px;
+	height: 24px;
+	z-index: 1000;
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+}
+
+#videoPause, #videoPlay, #sfxButton, #musicButton {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	width: 24px;
+	height: 24px;
+}
+
+#videoSlider {
+	position: relative;
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+	width: calc(100% - 24px - 24px - 24px - 100px);
+	height: 24px;
+}
+
+#videoDuration {
+	display: inline-block;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	width: 100px;
+	height: 24px;
+	cursor: pointer;
+	font-size: small;
+	font-weight: bold;
+	text-shadow: 1px 1px white, 1px -1px white, -1px -1px white, -1px 1px white;
+}
+

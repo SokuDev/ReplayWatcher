@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="../css/main.css" rel="stylesheet">
+		<link href="../css/loading.css" rel="stylesheet">
+	</head>
+	<body>
+		<div id="notInit" hidden>
+			<button onclick="loadSokuData()">Load soku data</button>
+		</div>
+		<div id="loadData" hidden>
+			<progress id="loadDataProgress"></progress>
+			<span id="loadDataData"></span>
+		</div>
+		<div id="gameContainer" class="game-container" hidden>
+			<div id="hidder"></div>
+			<div class="game" id="menu" hidden>
+				<img id="menuBackground"/>
+				<div id="menuHolder">
+				</div>
+				<p id="time"></p>
+				Replay file: <input type="file" id="replay" accept=".re2,.rep"><br>
+				<p id="loadError" style="color: red"></p>
+			</div>
+			<div class="game" id="loading" hidden>
+				<img id="loadBackground" />
+				<img id="gearLoad" />
+				<img id="gearLoad2" />
+			</div>
+			<div class="game" id="game" hidden>
+				<div id="gameScene">
+					<div id="counterTransform">
+						<div id="gameBackground" style="background-color: gray">
+						</div>
+					</div>
+					<img id="p1" />
+					<img id="p2" />
+					<div id="posP1"></div>
+					<div id="posP2"></div>
+					<div id="effects"></div>
+					<div id="infoEffects"></div>
+					<div id="p1Obj"></div>
+					<div id="p2Obj"></div>
+				</div>
+				<div id="gameHUD">
+					<img id="p1Portrait" />
+					<img id="p2Portrait" />
+					<div id="gameHUDUpper"></div>
+					<div id="gameHUDUnder"></div>
+					<div id="guiObjects"></div>
+				</div>
+				<div id="videoControlContainer">
+					<div id="videoControl">
+						<button id="videoPlay">&#9654;</button><button id="videoPause" hidden>&#9208;</button><input id="videoSlider" type="range" min="0" max="10" step="1" /><span id="videoDuration">0/0</span><button id="sfxButton"></button><button id="musicButton"></button>
+						<input id="sfxSlider" type="range" min="0" max="1" step="0.01" />
+						<input id="musicSlider" type="range" min="0" max="1" step="0.01" />
+					</div>
+					<button id="resetReplay">&#10060;</button>
+				</div>
+			</div>
+			<div id="fadeObject" class="game"></div>
+		</div>
+		<script src="../js/main.js"></script>
+		<script src="../js/fadeObject.js"></script>
+		<script src="../js/importSokuFiles.js"></script>
+		<script src="../js/assets.js"></script>
+		<script src="../js/engine.js"></script>
+		<script src="../js/replay.js"></script>
+		<script src="../js/game.js"></script>
+		<script src="../js/hud.js"></script>
+		<script src="../js/pngCrc.js"></script>
+		<script src="../js/assetsOut.js"></script>
+		<script src="../js/backgrounds.js"></script>
+		<script src="../js/pako.min.js"></script>
+	</body>
+</html>
