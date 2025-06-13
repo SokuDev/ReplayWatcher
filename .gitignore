@@ -40,3 +40,5 @@ cmake-build-*
 build
 game
 Server/web/hisoutensoku/data
+replays
+replays.zip

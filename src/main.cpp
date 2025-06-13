@@ -48,7 +48,8 @@ struct CharacterState {
 struct GameFramePacket {
 	CharacterState leftState;
 	CharacterState rightState;
-	SokuLib::Weather displayedWeather;
+	unsigned char activeWeather;
+	unsigned char displayedWeather;
 	unsigned short weatherTimer;
 	unsigned char soundCount;
 	SokuLib::Vector2f cameraTranslate;
@@ -266,6 +267,7 @@ int __fastcall CBattle_OnProcess(SokuLib::Battle *This) {
 		fillState(p1, p1l.size(), packet->leftState, soundsPlayed[1].size());
 		fillState(p2, p2l.size(), packet->rightState, soundsPlayed[2].size());
 		packet->weatherTimer = SokuLib::weatherCounter;
+		packet->activeWeather = SokuLib::activeWeather;
 		packet->displayedWeather = SokuLib::displayedWeather;
 		packet->soundCount = soundsPlayed[0].size();
 		packet->cameraTranslate = SokuLib::camera.translate;

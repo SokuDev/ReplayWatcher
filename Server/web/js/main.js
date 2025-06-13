@@ -147,6 +147,8 @@ let effectsFramedata;
 let infoEffectsFramedata;
 let framedatas = [ null, null ];
 let currentFrame = null;
+let weatherNumbers = document.createElement('img');
+let weatherNumbersActivated = document.createElement('img');
 
 function extractBoxes(boxes)
 {
@@ -405,6 +407,43 @@ async function loadMusic(id)
 	await loadFile('data/bgm/st' + k + ".ogg");
 }
 
+async function loadWeatherCounter(root)
+{
+	const canvas = document.createElement("canvas");
+	const url1 = await loadFileUrl('data/battle/weatherFont000.png');
+	const url2 = await loadFileUrl('data/battle/weatherFont001.png');
+	let p1 = new Promise((resolve, reject) => {
+		weatherNumbers.onload = resolve;
+		weatherNumbers.onerror = e => {
+			let err = new Error('Failed loading data/battle/weatherFont001.png');
+
+			err.event = e;
+			reject(err);
+		};
+		weatherNumbers.src = url2;
+	});
+	let p2 = new Promise((resolve, reject) => {
+		weatherNumbersActivated.onload = resolve;
+		weatherNumbersActivated.onerror = e => {
+			let err = new Error('Failed loading data/battle/weatherFont000.png');
+
+			err.event = e;
+			reject(err);
+		};
+		weatherNumbersActivated.src = url1;
+	});
+
+	canvas.setAttribute('id', 'weatherCounter');
+	canvas.style.left = "302px";
+	canvas.style.top = "48px";
+	canvas.style.zIndex = "30";
+	canvas.width = 38;
+	canvas.height = 18;
+	await p1;
+	await p2;
+	root.appendChild(canvas);
+}
+
 async function loadBaseData()
 {
 	let obj = {};
@@ -436,10 +475,10 @@ async function loadBaseData()
 	await loadHudFile(gameHUDUnder, 'data/battle/battleUnder.xml', 'hudUnder');
 	effectsFramedata = await loadEffects('effect');
 	infoEffectsFramedata = await loadEffects('infoeffect');
-
+	await loadWeatherCounter(gameHUD);
 	for (let i = 0; i < 2; i++) {
-		for (let j = 0; j < 5; j++)
-			window["hudUnder" + (20 + i * 10 + j)].children[0].style.transform = "scaleX(-1)";
+		//for (let j = 0; j < 5; j++)
+		//	window["hudUnder" + (20 + i * 10 + j)].children[0].style.transform = "scaleX(-1)";
 		for (let j = 0; j < 5; j++) {
 			let cardHolder = window["hudUnder" + (205 + j + i * 10)];
 

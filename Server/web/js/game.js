@@ -60,6 +60,7 @@ function renderObject(tag, obj, framedata, i, baseZ, invertZ)
 		color.a = (color.a * frame.blend.color.a) / 255;
 	}
 
+	// TODO: Rotation offset is wrong
 	rotation.x *= Math.PI / 180;
 	rotation.y *= Math.PI / 180;
 	rotation.z *= Math.PI / 180;
@@ -108,6 +109,22 @@ function renderObject(tag, obj, framedata, i, baseZ, invertZ)
 		if (frame.blend.mode === 2)
 			tag.style.mixBlendMode = "difference";
 	}
+}
+
+function renderWeatherCounter(frame)
+{
+	const counter = document.getElementById('weatherCounter');
+	const ctx = counter.getContext('2d');
+	const img = frame.activeWeather === 21 ? weatherNumbers : weatherNumbersActivated;
+	let timer = frame.weatherTimer;
+
+	ctx.clearRect(0, 0, 38, 18);
+	ctx.drawImage(img, timer % 10 * 11, 0, 11, 18, 27, 0, 11, 18);
+	timer = Math.floor(timer / 10);
+	ctx.drawImage(img, 132, 0, 5, 18, 22, 0, 5, 18);
+	ctx.drawImage(img, timer % 10 * 11, 0, 11, 18, 11, 0, 11, 18);
+	timer = Math.floor(timer / 10);
+	ctx.drawImage(img, timer % 10 * 11, 0, 11, 18, 0, 0, 11, 18);
 }
 
 function renderPlayerHud(player, framedata, i)
@@ -251,6 +268,7 @@ async function playFrame()
 	renderPlayer(window.p2, window.p2Obj, frame.p2, framedatas[1], 1);
 	renderEffects(window.effects, frame.effects, effectsFramedata, -1, 0, false);
 	renderEffects(window.infoEffects, frame.infoEffects, infoEffectsFramedata, -2, 15, true);
+	renderWeatherCounter(frame);
 	playSounds(frame.sounds, baseData.sfx);
 	playSounds(frame.p1.sounds, framedatas[0].sfx);
 	playSounds(frame.p2.sounds, framedatas[1].sfx);

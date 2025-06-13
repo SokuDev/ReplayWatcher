@@ -184,7 +184,8 @@ class ReplayReader {
 
 		frame.p1 = this.readReplayCharacterDataV2();
 		frame.p2 = this.readReplayCharacterDataV2();
-		frame.displayedWeather = this.readUInt();
+		frame.activeWeather = this.readUChar();
+		frame.displayedWeather = this.readUChar();
 		frame.weatherTimer = this.readUShort();
 		frame.sounds = [];
 		frame.sounds.length = this.readUChar();

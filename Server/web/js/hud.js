@@ -28,7 +28,7 @@ async function loadHudFile(root, path, idPrefix = "")
 		div.style.top = (+child.attributes.yposition.value + +subchild.attributes.yposition.value) + "px";
 
 		await new Promise((resolve, reject) => {
-			dummy.onload = e => {
+			dummy.onload = () => {
 				try {
 					canvas.width = +subchild.attributes.width.value;
 					canvas.height = +subchild.attributes.height.value;
@@ -91,13 +91,14 @@ async function loadHudFile(root, path, idPrefix = "")
 		} else if (child.tagName === 'sliderhorz') {
 			let redraw = () => {
 				let w = +subchild.attributes.width.value * div.getAttribute("value");
+				let left = +subchild.attributes.width.value - w;
 
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
 				ctx.drawImage(
 					dummy,
-					+subchild.attributes.xposition.value, +subchild.attributes.yposition.value,
+					+subchild.attributes.xposition.value + left, +subchild.attributes.yposition.value,
 					w, +subchild.attributes.height.value,
-					0, 0,
+					left, 0,
 					w, +subchild.attributes.height.value
 				);
 				img.src = canvas.toDataURL();

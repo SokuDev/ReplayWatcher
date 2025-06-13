@@ -133,7 +133,8 @@ class ReplayReader:
 		frame = {
 			"p1": self.readReplayCharacterDataV2(),
 			"p2": self.readReplayCharacterDataV2(),
-			"displayedWeather": self.readUInt(),
+			"activeWeather": self.readUChar(),
+			"displayedWeather": self.readUChar(),
 			"weatherTimer": self.readUShort(),
 			"sounds": [None] * self.readUChar(),
 			"camera": {
